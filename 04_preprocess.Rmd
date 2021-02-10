@@ -1,0 +1,297 @@
+# データ編集
+
+- サンプルデータで実行例を示す
+
+## 列の追加
+
+### mutate
+
+```{r mutate1}
+library(dplyr)
+df <- mutate(df,hoge = huga + piyo)
+```
+
+### add_column
+
+- 指定の位置に列を追加
+
+```{r add_column}
+df %>%
+  add_column(new_var = c("あ", "い", "う"), .before = "my_var")
+```
+
+### 3つ以上の列から最大や最小を求める
+
+- maxやminはデフォルトでは列方向にしか働かない
+
+```{r}
+df <- df %>% 
+  rowwise() %>% 
+  mutate(abc_max = max(A, B, C))
+```
+
+## 列の編集
+
+
+### mutate
+
+```{r mutate_same_col}
+df <- mutate(df,hoge = as.character(hoge))
+```
+
+### mutate, across
+
+## 列の削除
+
+```{r remove}
+df2 <- select(df, -3, -5, -6)
+df3 <- select(df, -piyo)
+```
+
+## 列の選択
+
+```{r select}
+df2 <- select(df, 2, 3, 5)
+df2 <- select(df, hoge, piyo)
+```
+
+### 列名が重複してる場合
+
+- 列名が重複してるデータをもらった場合、select等で列名を指定することができない
+- 下記のように片方の列を消すか、
+```{r}
+df <- df[, unique(colnames(df)), with = FALSE]
+```
+
+- 下記を使うと列名の重複を解消してくれる
+
+```{r}
+tibble::repair_names()
+```
+
+## 列の入替
+
+```{r replace3}
+df2 <- select(df, 2, 3, 4, 1, 5)
+df2 <- select(df, b, c, d, a, e)
+```
+
+## 列の名前変更
+
+### 全体変更
+
+```{r set_colnames}
+df2 <- set_colnames(df, c("hoge", "piyo", "hugahuga"))
+```
+
+### 一部変更
+
+```{r rename}
+df2 <- rename(df, piyopiyo = hoge)
+```
+
+## 列名取得
+
+```{r colnames}
+colnames(df)
+```
+
+## 並べ替え
+
+```{r arrange}
+df2 <- arrange(df, ID)
+```
+
+## 条件によるフィルタ
+
+```{r filter}
+df2 <- filter(df, name == "hoge")
+```
+
+### その人のx番目の行を取得
+
+#### row_number()を使う
+
+```{r}
+df2 <- df %>% 
+  group_by(id) %>% 
+  filter(row_number() == 2) %>%  # ここの数字を変えてx番目の行を取得
+  ungroup()
+```
+
+#### top_n()を使う
+
+```{r}
+df2 <- df %>% 
+  group_by(ID) %>% 
+  top_n(2, date) %>%   # ここの数字を変えてx番目の行を取得
+  ungroup()
+```
+
+### あるベクトルに含まれる行を抽出
+
+```{r semi_join}
+new_data <- semi_join(data1, data2, "ID")
+new_data <- filter(data1, id %in% data2$ID)
+```
+
+### あるベクトルに含まれない行を抽出
+
+```{r anti_join}
+new_data <- anti_join(data1, data2, "ID")
+new_data <- filter(data1, !(id %in% data2$ID))
+```
+
+## 重複削除
+
+### distinct
+
+```{r distinct}
+df2 <- distinct(df, ID, .keep_all = TRUE)
+```
+
+### first
+
+```{r first}
+df2 <- df %>% 
+  group_by(id) %>% 
+  first() %>% 
+  ungroup()
+```
+
+## データを縦に結合
+
+- 以下の2つはほとんど同じ動きだが、列名が一致してないときとか違う挙動を示す?
+
+```{r bind_rows}
+new_data <- bind_rows(data1, data2, data3)
+new_data <- rbind_all(data1, data2, data3)
+```
+  
+## データを横に結合
+
+- 以下の2つはほとんど同じ動きだが、行数が一致してないときとか違う挙動を示す?
+
+```{r bind_cols}
+new_data <- bind_cols(data1, data2)
+new_data <- cbind_all(data1, data2)
+```
+
+## マッチしたデータを横に結合
+
+- [参考文献](https://qiita.com/matsuou1/items/b1bd9778610e3a586e71)
+
+```{r left_join}
+new_data <- left_join(data1, data2, "ID")
+```
+  
+```{r inner_join}
+new_data <- inner_join(data1, data2, "ID")
+```
+
+- 2つのデータで同じ名前の列があると接尾に「.x」と「.y」がつくがsuffixを使うと自分で指定できる
+
+```{r}
+inner_join(x, y, "id", suffix = c("_original", "_new"))
+```
+
+## 1行ずらす
+
+- lag()
+- lead()
+
+### case_when
+  
+変えたいものが3つ以上あるときは、case_whenを使うと便利。 
+様々な表現を年齢で統一したい…
+上述のmutate（列の追加）と組み合わせればできます。
+
+```{r case_when}
+df <- mutate(df,newage = case_when(age=="高齢者" ~ "70歳代",
+                       age=="成人" ~ "30歳代",
+                       age=="乳幼児" ~ "10歳未満",
+                       age=="小児" ~ "10歳未満",
+                       age=="青少年" ~ "10歳代",
+                       TRUE ~age))
+```
+
+### str_replace_all(未編集)
+
+stringr::str_replace_allを使うといい感じ。
+
+- [参考](https://qiita.com/kazutan/items/0b690961d4516e48f6c0)
+
+## 文字列結合
+
+pasteを使う。sepで区切り文字を指定する。  
+
+```{r paste}
+df$new_var <- paste(df$ID,df$sex,sep = ",")
+```
+
+sepを指定しないと半角スペースになる。  
+  
+paste0だと区切り文字なし
+
+```{r paste0}
+df$new_var <- paste0(df$ID,df$sex)
+```
+  
+## 文字列切り出し
+
+substrを使う。[参考文献](https://stats.biopapyrus.jp/r/basic/string.html)  
+
+```{r substr}
+dna <- c("AAGCT", "TTAAA", "CCTAT")
+substr(dna, 2, 3)
+```
+
+第2引数は切出しの開始位置、第3引数は終了位置を指定  
+  
+## 正規表現
+  
+## 欠損値
+簡単には[*ここ*](https://qiita.com/five-dots/items/361a42baf1e94edf5846)に書いてあるよ。  
+
+## 穴埋め
+
+### 基本
+
+dplyrのif_elseを使う。
+下の例は「もし欠損なら代入し、欠損でなければそのまま」という動き  
+
+```{r if_else2}
+library(dplyr)
+df$hoge <- if_else(is.na(df$hoge),"ああ",df$hoge)
+```
+
+デフォルトのifelse関数は**絶対に**使わないでね。[参考文献](https://notchained.hatenablog.com/entry/2016/11/23/112729)    
+TRUEとFALSEでデータ型が一致してないとダメだから注意。  
+
+### 欠損を0で埋める
+
+```{r}
+df[is.na(df)] <- 0
+```
+
+## 除外
+
+欠損がある「行」を全て削除する。  
+つまりComplete Cases。
+
+```{r }
+df2 <- na.omit(df)
+```
+
+## LOCF
+
+{tidyr}のfill()を使う。
+
+```{r fill}
+df2 <- df1 %>% 
+  fill(age, value1)
+```
+
+pull()
+
+mutate(bmigp = case_when(bmi < 25 ~ 1, 25 <= bmi & bmi < 30 ~ 2, 30 <= bmi ~ 3)) mutate(bmigp=cut(bmi, c(0, 25, 30, 40), labels=c(“nwt”, “owt”, “obese”), LEFT =FALSE))

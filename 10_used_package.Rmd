@@ -1,0 +1,178 @@
+# 使用パッケージ
+
+## 必須
+
+### 全般
+
+- remotes
+- usethis
+- installr
+- rstudioapi
+- fs
+- here
+- eply
+- MilesMcBain/breakerofchains
+
+### パッケージ管理
+
+- BiocManager
+- pacman
+
+### データ分析
+
+- tidyverse
+- openxlsx
+- dummies
+- data.table
+
+### 統計解析
+
+- tidymodels
+- survival
+- survminer
+
+### 表
+
+- tableone
+- gt
+- gtsummary
+- DT
+- flextable
+- ftExtra
+
+### グラフ・可視化
+
+- DiagrammeR
+- DiagrammeRsvg
+- psych
+- summarytools
+- skimr
+- DataExplorer
+- ggsignif
+- patchwork
+- VennDiagram
+
+### R Markdown
+
+- rmarkdown
+- revealjs
+- knitr
+- rmdformats
+
+### アプリ
+
+- Shiny
+- rsconnect
+- shinycssloaders
+
+### スクレイピング
+
+- rvest
+
+### Reproducible
+
+- datapasta
+
+### Docker
+
+- docker
+- liftr
+
+```R
+install.packages(c(
+"remotes", "usethis",  "installr", "rstudioapi", "fs", "eply", "here", 
+"BiocManager", "pacman", 
+"tidyverse", "openxlsx", "dummies", "data.table", 
+"tidymodels", "survival", "survminer", 
+"tableone", "gt", "gtsummary", "DT", "flextable", "ftExtra", 
+"DiagrammeR", "DiagrammeRsvg", "psych", "summarytools", "skimr", "DataExplorer", "ggsignif", "patchwork", "VennDiagram", 
+"rmarkdown", "revealjs", "knitr", "rmdformats", 
+"Shiny", "rsconnect", "shinycssloaders", 
+"rvest", 
+"datapasta", 
+"docker", "liftr"
+), dependencies=TRUE)
+
+remotes::install_github("MilesMcBain/breakerofchains")
+```
+
+## 推奨
+
+### 汎用
+
+- devtools
+- reticulate
+- codicR
+- conflicted
+- lintr
+- drake
+
+### 並列処理
+
+- doParallel
+
+### R学習
+
+- swirl
+- learnr
+
+### グラフ
+
+- ggsci
+- ggrepel
+- GGally
+ - officer
+ - stargazer
+ - myprettyreport
+- corrplot
+- corrr
+- plotly
+
+### RStan
+
+- rstan
+
+### LaTeX
+
+- tinytex
+
+### SAS
+
+- SASmarkdown
+
+### 疫学
+
+- Epi
+- epiR
+- comorbidity
+- icd
+- ggdag
+
+### データ分析・機械学習
+
+- smartdata
+- bit64
+
+### スクレイピング
+
+- RSelenium
+
+### 時間計測
+
+- tictoc
+
+### 資料作成
+
+- xaringan
+- export
+- INWTlab/ireports
+	- remotes::install_github("INWTlab/ireports")
+
+### アドイン
+
+- colourPicker
+	- colourPicker
+- ggThemeAssist
+	- ggplot Theme Assistant
+- styler
+	- style active file

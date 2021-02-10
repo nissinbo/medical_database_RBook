@@ -1,0 +1,191 @@
+# Tips
+
+- 細かな覚え書き
+
+## R Studioの設定
+
+- Windows
+    - ~/AppData/Roaming/RStudio/
+- UNIX
+    - ~/.config/rstudio/
+
+- rstudio-prefs.json
+- /keybindings/rstudio_bindings.json
+- /keybindings/editor_bindings.json
+- /keybindings/addins.json
+- /snippets/r.snippets
+
+## ショートカットキー
+
+- https://appsilon.com/rstudio-shortcuts-and-tips/
+
+<!-- table -->
+|動作|キー|
+|---|---|
+|<-|Alt + -  |
+|%>%|Ctrl+Shift+M|
+|Rmarkdown knit|Ctrl+Shift+K|
+|chunk挿入，chunk分割|Ctrl+Shift+I|
+|インデント自動揃え|Ctrl+I|
+|Consoleの+を消す|Esc|
+|カーソルをスクリプトへ|Ctrl+1|
+|カーソルをコンソールへ|Ctrl+2|
+|関数自動作成|Ctrl+Alt+X|
+|見出し,チャンクへジャンプ|Alt+Shift+J|
+  
+[参考文献](http://kohske.github.io/R/rstudio/cheetsheet/RStudio-Rmdv2-cheat.pdf)
+
+## \# シャープ
+
+Rスクリプトにコメントを残すには#をつける。
+
+```{r}
+manipulation(df, option = TRUE) # これはコメントです
+```
+
+コメントを残すのは、コードレビューしてもらうときのためと、自分が後で見返したときのため。  
+最初は苦痛かもしれないが、トータルで絶対得なのでコメント書きまくろう。
+
+## if(0){}
+
+1行とかの操作を一時的に実行させない場合は上記の#を使えばいい。  
+実行させたくない操作が多くの行にまたがっている場合は、if(0){}を使うのがおすすめ。
+
+```{r}
+if(0){
+  veryverylong_action(df) %>% 
+    hogehoge(mano = TRUE) %>% 
+    tonikaku_nagai_syori()
+  }
+```
+
+if(0){}で囲まれたコードは実行されない。実行させたいときはif(1){}とすればよいので、いわばスイッチになる。
+
+### パッケージ無かったらインストール
+
+```{r}
+if (!require("dplyr")) {install.packages("dplyr")}
+```
+
+### 警告を出力せず読み込む
+
+```{r}
+suppressWarnings(library(tidyverse))
+```
+## 時間計測
+
+### tictoc
+
+## Rの学習・情報を得る
+
+### ネット
+
+- [R初心者の館](https://das-kino.hatenablog.com/entry/2019/11/07/1250449)
+- [Rによるデータ前処理実習](https://heavywatal.github.io/slides/tmd2019/)
+- [R関連の情報源](https://qiita.com/maruman029/items/4963d483c6cd0fb50770)
+- [Rクックブック](https://rc2e.com/)
+- https://www.marketechlabo.com/r-tips/
+
+## パッケージの情報を得る
+
+まずは「パッケージ名+R」で検索し、CRANの公式ドキュメントを見る。英語だがこれを見るのは大事。  
+githubというサイトにはパッケージの関数がどのように定義されているかが載っているので余力があれば見る。  
+  
+以下のサイトを使えばGoogle翻訳を駆使して日本語で理解できるかも。
+
+- [RDocumentation](https://www.rdocumentation.org/)
+- [rdrr.io](https://rdrr.io/)
+- [METACRAN](https://www.r-pkg.org/)
+
+## ググるにあたって
+
+わからないことがあったらググる習慣をつけよう。  
+特に、英語で検索をかけると望みのものが見つかることが多い。  
+以下に検索に便利なキーワードの書いておく。  
+
+<!-- table -->
+|知りたいこと|キーワード|
+|---|---|
+|エラーの理由|エラーメッセージコピペ|
+|tidy dataから検定したい|○○(検定名) + tidy|
+
+## コーディングスタイルガイド
+
+- [tidyverse style guide](https://style.tidyverse.org/)
+
+## Advanced R
+
+- [Advanced R 第1版](http://adv-r.had.co.nz/Style.html)
+- [Advanced R 第2版](https://adv-r.hadley.nz/index.html)
+
+## プログラミング時の留意点
+
+### 心がけること
+
+- 加工前後のデータを比較して、ロジックに問題がないか確認
+- エラーはあるものと思い、何回も確認
+- 第三者が見ても分かるようにコメントをつける
+- 第三者にコードレビューしてもらう
+- 対象者のフローチャートを書く
+
+### できれば行いたいこと
+
+- 変数定義書を作成
+- 第三者にプログラムを書いてもらい、結果が一致するか確認
+
+## ミスしがちなところ
+
+### 汎用的なところ
+
+- タイプミス、スペルミス
+- numeric、character、factor
+
+### 医療情報データベース特有
+
+- 年月の差をとるのに普通に引き算
+- 疑いフラグ抜き忘れ
+- 処方日、検査値等の欠損
+
+### Rのアップデート
+
+素のRから以下のコードを実行する。  
+うまくいかない場合は普通に[ここ](https://cran.r-project.org/)からダウンロード。
+
+```{r installr}
+installr::updateR(browse_news = FALSE, install_R = TRUE, copy_packages = FALSE,copy_Rprofile.site = FALSE, keep_old_packages = FALSE, update_packages = TRUE, start_new_R = FALSE,quit_R = TRUE)
+```
+
+## メモリ開放
+
+[参考文献](http://knknkn.hatenablog.com/entry/2019/05/26/011705)
+
+重いデータを読み込んだ時等に、Rの挙動が不安定になったときは以下を実行する。
+
+```{r}
+gc(reset = TRUE)
+gc(reset = TRUE)
+```
+
+## サンプルデータ作成
+
+### data.frame()を使う
+
+```{r}
+df <- data.frame(id = c(1,1,2,2,3,3,4,4), value = c("a","b","c","a","b","c","a","b"))
+```
+
+### read.table()を使う
+
+```{r}
+df <- read.table(text = "id  samediff  factor  value
+1 S give    3
+1 S impact  4
+2 S give    2
+2 S impact  5   
+3 D give    1
+3 D impact  4
+4 D give    3
+4 D impact  5", header = TRUE, stringsAsFactors = FALSE)
+```
+
+### datapasta

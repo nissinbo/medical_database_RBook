@@ -1,0 +1,39 @@
+# ディレクトリとR Project
+
+- ディレクトリの設定やR Projectについて記す
+
+## 作業ディレクトリ確認
+
+- 自分が今どこにいるか
+
+```{r getwd}
+getwd()
+```
+
+## 作業ディレクトリ設定
+
+```{r setwd}
+setwd("./folder/path/here")
+```
+
+Ctrl + Shift + HでGUIによる設定が可能
+
+### スクリプトファイルが存在するとこにsetwdしたい
+
+- R Studioでのみ使用可
+- R Projectは使いたくないけど相対パスで管理したい場合は使える
+
+```{r setwd_here}
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+```
+
+### R Project
+
+- 1つの分析プロジェクトに対して1つのR Projectを作成する
+- .Rprojのあるフォルダがディレクトリになる
+
+### `here` package
+
+- Rproj等を起点にファイルパスの指定ができる
+- Windows/Macの互換などを気にする必要がなくなる
+- [uriboさん](https://uribo.hatenablog.com/entry/2018/01/25/082000)

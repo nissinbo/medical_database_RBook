@@ -1,0 +1,58 @@
+# 統計解析
+
+**制作中**
+
+`infer`パッケージのchisq_test()が便利。  
+tidy dataから、一発で検定できる。  
+
+```{r}
+library(infer)
+mtcars %>%
+  mutate(cyl = factor(cyl), am = factor(am)) %>%
+  chisq_test(cyl ~ am)
+```
+
+## 検定
+
+### t検定
+
+### Wilcoxonの順位和検定
+
+{coin}のwilcox_test()を使おう。  
+[参考文献](https://blog.goo.ne.jp/r-de-r/e/019d0afc8e702b044768dd8eeaed3dcf)
+
+```{r}
+wilcox_test(number ~ group, data = df, distribution = "exact")
+```
+
+### 分割表の検定
+
+- カイ二乗検定, フィッシャーの正確検定
+
+## 回帰分析
+
+### 重回帰
+
+### ロジスティック回帰
+
+#### broom
+
+```{r}
+library(broom)
+tidy(model, conf.int = TRUE, exponentiate = TRUE)
+```
+
+## 生存時間分析
+
+- https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html
+
+### Cox回帰
+
+{survival}と{survminer}を使う。
+
+```{r}
+library(survival)
+library(survminer)
+cox <- coxph(Surv(time, event) ~ group + sex + age, method = "breslow", data = dat)
+ggforest(cox)
+```

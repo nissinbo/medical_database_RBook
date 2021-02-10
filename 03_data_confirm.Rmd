@@ -1,0 +1,48 @@
+# データ確認
+
+## 列ごと
+
+### 欠損列を含む列を表示
+
+```{r}
+starwars %>% 
+  summarise(across(everything(), ~sum(is.na(.)), .names = "{.col}_na"))
+```
+
+### ユニークデータ数
+
+```{r}
+df %>% 
+  n_distinct(id)
+```
+
+### 列の型
+
+- mode, typeof
+
+```{r mode}
+starwars %>% 
+  summarise(across(everything(), ~mode(.)))
+
+starwars %>% 
+  summarise(across(everything(), ~typeof(.)))
+```
+
+### 列ごとに型、重複無し数、欠損数を表示
+
+```{r}
+starwars %>% map_df(~(data.frame(class = class(.x), n_distinct = n_distinct(.x), isna = sum(is.na(.x)))), .id = "variable")
+```
+
+## dataframeの概要
+
+### dataframeの次元(行数と列数)
+
+```{r dim}
+dim(data)
+```
+
+### package
+
+- summarytools::descr(), summarytools::dfSummary()
+- skimr::skim()

@@ -1,0 +1,33 @@
+---
+title: "My R book"
+author: "nissinbo"
+date: "`r Sys.time()`"
+site: bookdown::bookdown_site
+output:
+  bookdown::gitbook: default
+---
+
+# はじめに
+
+## What's this?
+
+- Rに関する個人的メモ
+- 便利だと思ったもの, 備忘録, 気になることなど
+
+## 作成・ビルド
+
+- `bookdown`パッケージを使用
+- チャンクラベルが重複しないように注意
+- BuildタブのBuild Bookをクリック
+    
+## 公開
+
+- githubで管理(したい)
+
+## サンプルデータ
+
+- 3つのサンプルデータを使用
+    - sample_patient.csv
+    - sample_drug.csv
+    - sample_disease.csv
+- githubから直接読み込む

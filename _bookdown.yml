@@ -1,0 +1,4 @@
+book_filename: "My R book"
+delete_merged_file: true
+output_dir: docs
+before_chapter_script: "before_chapter.R"

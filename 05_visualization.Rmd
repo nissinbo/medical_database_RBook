@@ -1,0 +1,25 @@
+# ggplot2によるVisualization
+
+**制作中です**
+
+## 基本
+
+## 応用
+
+### 図中にテキストラベルを入れる
+
+- ggrepel(https://cran.r-project.org/web/packages/ggrepel/vignettes/ggrepel.html)
+
+### 複数の図を並べる
+- patchwork
+
+## 生存時間分析
+
+### ggforest
+
+### Kaplan-Meier曲線
+
+## 便利なサイト
+
+- [data to viz](https://www.data-to-viz.com/)
+  - 手持ちのデータから、どのように視覚化するかを教えてくれる

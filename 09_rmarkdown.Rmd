@@ -1,0 +1,42 @@
+# R Markdown
+
+**制作中**
+
+## R Markdownの基本
+
+[クックブック](https://bookdown.org/yihui/rmarkdown-cookb)ook/
+
+## Chunk Option
+
+各Chunkごとに各種設定が行える  
+[参考文献1](https://teramonagi.hatenablog.com/entry/20130615/1371303616) 
+[参考文献2](http://gihyo.jp/admin/serial/01/r-markdown)  
+
+マイナーだが便利なオプション  
+
+- cache
+- fig.width
+- fig.height
+
+### Global Option
+
+Rmdファイル全体に適用したいoptionは、Global Optionとして設定できる。
+
+```{r}
+opts_chunk$set(prompt = TRUE, message = FALSE)
+```
+
+## Rmdでのディレクトリ設定
+
+Rmdではsetwdをしてもチャンク毎にリセットされる。  
+ファイルでディレクトリを設定したい場合は、以下のように設定する。
+
+```{r}
+opts_chunk$set(root.dir = "/path/to/folder/")
+```
+
+## knitの出力先指定
+
+```{r}
+knit: (function(...) rmarkdown::render(..., output_file = "./result.html", envir=.GlobalEnv))
+```

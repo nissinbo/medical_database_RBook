@@ -1,0 +1,65 @@
+# 出力・保存
+
+**作成中**
+
+## 表を作る
+
+### kable
+
+### DT
+
+### tableOne
+
+### gt, gsummary
+
+### flextable, ftExtra
+
+## RData, RDSで出力
+
+- 複数のオブジェクトを1つのRDataに保存することも可能
+- [RDataとRDSは微妙な違いがあるそう](https://stackoverflow.com/questions/21370132/r-data-formats-rdata-rda-rds-etc)
+
+```{r save}
+save(df, file = "df.RData")
+save(df, file = "df.rda")
+save(df1, df2, df3, file = "df.RData")
+
+saveRDS(x, file="x.Rds")
+```
+
+## csvで出力
+
+### デフォルト関数
+
+```{r writecsv}
+write.csv(df, "df.csv", row.names = F)  
+```
+
+### fwrite
+
+```{r fwrite}
+library(data.table)
+fwrite(df, "df.csv")  
+```
+
+## xlsxで出力
+
+```{r writexlsx}
+library(openxlsx)
+write.xlsx(df, "df.xlsx")  
+```
+
+## 結果の出力
+
+- consoleの出力結果を保存する場合
+
+### sink
+
+- sink()でリセットされる
+- append = FALSEで上書き(デフォルト) TRUEで追記
+
+```{r sink}
+sink("./result.txt", append = FALSE)
+print(1 + 1)
+sink()
+```
