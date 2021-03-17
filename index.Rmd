@@ -11,23 +11,29 @@ output:
 
 ## What's this?
 
-- Rに関する個人的メモ
-- 便利だと思ったもの, 備忘録, 気になることなど
+- Rによる医療情報DB解析のメモ
+- 明記しない限りdata.frame, tidyverseの関数を用いる
 
-## 作成・ビルド
+## サンプルデータ
+
+- データハンドリングの例として、著者作成のデータを使用する
+- レセプトデータをイメージした架空のデータ
+    - sample_patient.csv
+    - sample_drug.csv
+    - sample_disease.csv
+- 以下のようにgithubから直接読み込む
+
+```{r}
+# read.csv()
+```
+
+## 作成・ビルド・管理(読まなくていいです)
 
 - `bookdown`パッケージを使用
 - チャンクラベルが重複しないように注意
 - BuildタブのBuild Bookをクリック
-    
-## 公開
+- githubで管理
 
-- githubで管理(したい)
+## To Do
 
-## サンプルデータ
-
-- 3つのサンプルデータを使用
-    - sample_patient.csv
-    - sample_drug.csv
-    - sample_disease.csv
-- githubから直接読み込む
+- pull()

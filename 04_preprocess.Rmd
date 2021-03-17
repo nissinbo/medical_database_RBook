@@ -6,9 +6,11 @@
 
 ### mutate
 
-```{r mutate1}
-library(dplyr)
-df <- mutate(df,hoge = huga + piyo)
+- https://kazutan.github.io/kazutanR/hands_on_170730/mutate.html
+
+```{r mutate}
+drug2 <- mutate(drug, dose_amount_2 = dose_amount * 2)
+drug2
 ```
 
 ### add_column
@@ -16,144 +18,210 @@ df <- mutate(df,hoge = huga + piyo)
 - 指定の位置に列を追加
 
 ```{r add_column}
-df %>%
-  add_column(new_var = c("あ", "い", "う"), .before = "my_var")
+drug %>% 
+  add_column(new_var = "value", .before = "id")
 ```
 
-### 3つ以上の列から最大や最小を求める
+### 複数の列から最大や最小を求める
 
-- maxやminはデフォルトでは列方向にしか働かない
+- maxやminは基本列方向にしか働かないためrowwiseを使う
+- よりよい書き方ありますか?
 
-```{r}
-df <- df %>% 
+```{r rowwise}
+df <- disease %>% 
+  rename(date_dis = date) %>%  # 列名重複を避ける為に変更しておく
+  inner_join(drug, "id") %>%  # 結合
   rowwise() %>% 
-  mutate(abc_max = max(A, B, C))
+  mutate(date_max = max(date, date_dis, na.rm = TRUE)) # NAは除外
 ```
+
+### 条件分岐
+
+- if_else()
+- case_when()
+
+### ビニング
+```{r}
+# mutate(bmigp = case_when(bmi < 25 ~ 1, 25 <= bmi & bmi < 30 ~ 2, 30 <= bmi ~ 3))
+# mutate(bmigp=cut(bmi, c(0, 25, 30, 40), labels=c(“nwt”, “owt”, “obese”), LEFT =FALSE))
+```
+
+### 1行ずらす
+
+- lag()
+- lead()
 
 ## 列の編集
 
-
 ### mutate
 
+- mutateで既存の列を指定すれば上書きになる
+
 ```{r mutate_same_col}
-df <- mutate(df,hoge = as.character(hoge))
+drug2 <- mutate(drug, dose_amount = as.character(dose_amount))
 ```
 
 ### mutate, across
 
-## 列の削除
-
-```{r remove}
-df2 <- select(df, -3, -5, -6)
-df3 <- select(df, -piyo)
-```
+- 制作中
 
 ## 列の選択
 
+- selectを使う
+- 列番号または列名による指定が可能
+
 ```{r select}
-df2 <- select(df, 2, 3, 5)
-df2 <- select(df, hoge, piyo)
+drug2 <- drug %>% 
+  select(1, 3)
+drug2 <- drug %>% 
+  select(id, atccode)
+```
+
+## 列の削除
+
+- selectで「!」を使うと削除になる
+- 列番号または列名による指定が可能
+
+```{r remove}
+drug2 <- drug %>% 
+  select(!2, !4)
+drug2 <- drug %>% 
+  select(!id, !atccode)
 ```
 
 ### 列名が重複してる場合
 
 - 列名が重複してるデータをもらった場合、select等で列名を指定することができない
-- 下記のように片方の列を消すか、
-```{r}
-df <- df[, unique(colnames(df)), with = FALSE]
-```
-
-- 下記を使うと列名の重複を解消してくれる
-
-```{r}
-tibble::repair_names()
-```
+- `tibble::repair_names()`を使うと列名の重複を解消してくれる
 
 ## 列の入替
 
+- 列番号または列名による指定が可能
+
 ```{r replace3}
-df2 <- select(df, 2, 3, 4, 1, 5)
-df2 <- select(df, b, c, d, a, e)
+patient2 <- patient %>% 
+  select(2, 3, 1)
+patient2 <- patient %>% 
+  select(gender, start_date, id)
 ```
 
-## 列の名前変更
+## 列名関連
 
-### 全体変更
+## 列名確認
 
-```{r set_colnames}
-df2 <- set_colnames(df, c("hoge", "piyo", "hugahuga"))
+```{r colnames}
+colnames(patient)
 ```
 
 ### 一部変更
 
 ```{r rename}
-df2 <- rename(df, piyopiyo = hoge)
+patient2 <- patient %>% 
+  rename(patientid = id)
 ```
 
-## 列名取得
+### 全体変更
 
-```{r colnames}
-colnames(df)
+```{r set_colnames}
+patient2 <- patient %>% 
+  set_colnames(c("col1", "col2", "col3"))
+```
+
+## 列の作成・選択・入替・名前変更を一括で
+
+- transmuteを使うと上記の作業を一行で書くことができる
+
+```{r transmute}
+patient2 <- patient %>% 
+  transmute(gender, patientid = id)
 ```
 
 ## 並べ替え
 
+- 複数の列をキーにして並べ替えることもできる
+
 ```{r arrange}
-df2 <- arrange(df, ID)
+patient2 <- patient %>% 
+  arrange(start_date)
 ```
 
 ## 条件によるフィルタ
 
 ```{r filter}
-df2 <- filter(df, name == "hoge")
+# idが1の患者み
+patient2 <- patient %>% 
+  filter(id == 1)
+
+# idが5以下の患者のみ
+patient2 <- patient %>% 
+  filter(id <= 5)
+
+# genderがMの患者のみ
+patient2 <- patient %>% 
+  filter(gender == "M")
 ```
 
-### その人のx番目の行を取得
+## その人のx番目の行を取得
 
-#### row_number()を使う
+- row_number()を使う
 
 ```{r}
-df2 <- df %>% 
+disease2 <- disease %>% 
   group_by(id) %>% 
-  filter(row_number() == 2) %>%  # ここの数字を変えてx番目の行を取得
+  filter(row_number() == 2) %>%   # ここの数字を変えてx番目の行を取得
   ungroup()
 ```
 
-#### top_n()を使う
+## その人の上からx番目の行を取得
+
+- `row_number()`の例を不等号に変えればできるが、`top_n()`の例を示す
 
 ```{r}
-df2 <- df %>% 
-  group_by(ID) %>% 
-  top_n(2, date) %>%   # ここの数字を変えてx番目の行を取得
+disease2 <- disease %>% 
+  group_by(id) %>% 
+  top_n(2, date) %>%   # ここの数字を変えて1~x番目の行を取得
   ungroup()
 ```
 
-### あるベクトルに含まれる行を抽出
+## 特定のデータフレームの列に含まれる行を抽出
+
+- `filter`と`%in%`か、`semi_join`を使う
 
 ```{r semi_join}
-new_data <- semi_join(data1, data2, "ID")
-new_data <- filter(data1, id %in% data2$ID)
+# 一例としてデータフレームを作成する
+df <- data.frame(id = c(1, 3, 5), var = c("a", "b", "c"))
+
+patient2 <- filter(patient, id %in% df$id)
+patient2 <- semi_join(patient, df, "id")
 ```
 
-### あるベクトルに含まれない行を抽出
+## 特定のデータフレームの列に含まれない行を抽出
+
+- `filter`と`%in%`か、`anti_join`を使う
 
 ```{r anti_join}
-new_data <- anti_join(data1, data2, "ID")
-new_data <- filter(data1, !(id %in% data2$ID))
+# 一例としてデータフレームを作成する
+df <- data.frame(id = c(1, 3, 5), var = c("a", "b", "c"))
+
+patient2 <- filter(patient, !(id %in% df$id))
+patient2 <- anti_join(patient, df, "id")
 ```
 
 ## 重複削除
 
+- 初回処方日や初診断月の特定に用いることが多い
+
 ### distinct
 
 ```{r distinct}
-df2 <- distinct(df, ID, .keep_all = TRUE)
+drug2 <- drug %>% 
+  distinct(id, .keep_all = TRUE)
 ```
 
 ### first
 
 ```{r first}
-df2 <- df %>% 
+drug2 <- drug %>% 
   group_by(id) %>% 
   first() %>% 
   ungroup()
@@ -161,137 +229,53 @@ df2 <- df %>%
 
 ## データを縦に結合
 
-- 以下の2つはほとんど同じ動きだが、列名が一致してないときとか違う挙動を示す?
-
 ```{r bind_rows}
-new_data <- bind_rows(data1, data2, data3)
-new_data <- rbind_all(data1, data2, data3)
+patient2 <- bind_rows(patient, patient)
 ```
   
 ## データを横に結合
 
-- 以下の2つはほとんど同じ動きだが、行数が一致してないときとか違う挙動を示す?
-
 ```{r bind_cols}
-new_data <- bind_cols(data1, data2)
-new_data <- cbind_all(data1, data2)
+patient2 <- bind_cols(patient, patient)
 ```
 
 ## マッチしたデータを横に結合
 
-- [参考文献](https://qiita.com/matsuou1/items/b1bd9778610e3a586e71)
+- 基本的にleft_joinとinner_joinが使えればOK
+- 使い分けについては以下URLなどを参考に
+- https://qiita.com/matsuou1/items/b1bd9778610e3a586e71
 
 ```{r left_join}
-new_data <- left_join(data1, data2, "ID")
+df <- left_join(patient, disease, "id")
 ```
   
 ```{r inner_join}
-new_data <- inner_join(data1, data2, "ID")
+df <- inner_join(patient, disease, "id")
 ```
 
-- 2つのデータで同じ名前の列があると接尾に「.x」と「.y」がつくがsuffixを使うと自分で指定できる
+- 2つのデータで同名の列があると接尾に「.x」と「.y」がつくが、suffixを使うと自分で指定できる
 
 ```{r}
-inner_join(x, y, "id", suffix = c("_original", "_new"))
+df <- inner_join(drug, disease, "id", suffix = c("_drug", "_disease"))
 ```
 
-## 1行ずらす
+## 部分一致
 
-- lag()
-- lead()
+### 文字列一致判定
 
-### case_when
-  
-変えたいものが3つ以上あるときは、case_whenを使うと便利。 
-様々な表現を年齢で統一したい…
-上述のmutate（列の追加）と組み合わせればできます。
+- str_detect()
 
-```{r case_when}
-df <- mutate(df,newage = case_when(age=="高齢者" ~ "70歳代",
-                       age=="成人" ~ "30歳代",
-                       age=="乳幼児" ~ "10歳未満",
-                       age=="小児" ~ "10歳未満",
-                       age=="青少年" ~ "10歳代",
-                       TRUE ~age))
-```
+### 文字列置換
 
-### str_replace_all(未編集)
+- str_replace(), str_replace_all()
+- https://qiita.com/kazutan/items/0b690961d4516e48f6c0
 
-stringr::str_replace_allを使うといい感じ。
+### 文字列削除
 
-- [参考](https://qiita.com/kazutan/items/0b690961d4516e48f6c0)
+- str_remove()
 
-## 文字列結合
-
-pasteを使う。sepで区切り文字を指定する。  
-
-```{r paste}
-df$new_var <- paste(df$ID,df$sex,sep = ",")
-```
-
-sepを指定しないと半角スペースになる。  
-  
-paste0だと区切り文字なし
-
-```{r paste0}
-df$new_var <- paste0(df$ID,df$sex)
-```
-  
-## 文字列切り出し
-
-substrを使う。[参考文献](https://stats.biopapyrus.jp/r/basic/string.html)  
-
-```{r substr}
-dna <- c("AAGCT", "TTAAA", "CCTAT")
-substr(dna, 2, 3)
-```
-
-第2引数は切出しの開始位置、第3引数は終了位置を指定  
-  
 ## 正規表現
   
 ## 欠損値
-簡単には[*ここ*](https://qiita.com/five-dots/items/361a42baf1e94edf5846)に書いてあるよ。  
 
-## 穴埋め
-
-### 基本
-
-dplyrのif_elseを使う。
-下の例は「もし欠損なら代入し、欠損でなければそのまま」という動き  
-
-```{r if_else2}
-library(dplyr)
-df$hoge <- if_else(is.na(df$hoge),"ああ",df$hoge)
-```
-
-デフォルトのifelse関数は**絶対に**使わないでね。[参考文献](https://notchained.hatenablog.com/entry/2016/11/23/112729)    
-TRUEとFALSEでデータ型が一致してないとダメだから注意。  
-
-### 欠損を0で埋める
-
-```{r}
-df[is.na(df)] <- 0
-```
-
-## 除外
-
-欠損がある「行」を全て削除する。  
-つまりComplete Cases。
-
-```{r }
-df2 <- na.omit(df)
-```
-
-## LOCF
-
-{tidyr}のfill()を使う。
-
-```{r fill}
-df2 <- df1 %>% 
-  fill(age, value1)
-```
-
-pull()
-
-mutate(bmigp = case_when(bmi < 25 ~ 1, 25 <= bmi & bmi < 30 ~ 2, 30 <= bmi ~ 3)) mutate(bmigp=cut(bmi, c(0, 25, 30, 40), labels=c(“nwt”, “owt”, “obese”), LEFT =FALSE))
+- https://qiita.com/five-dots/items/361a42baf1e94edf5846

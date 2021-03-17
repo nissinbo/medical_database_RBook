@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>12 Tips | My R book</title>
-  <meta name="description" content="12 Tips | My R book" />
+  <title>12 Tips | 医療情報DB解析のためのデータハンドリング大全</title>
+  <meta name="description" content="12 Tips | 医療情報DB解析のためのデータハンドリング大全" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="12 Tips | My R book" />
+  <meta property="og:title" content="12 Tips | 医療情報DB解析のためのデータハンドリング大全" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12 Tips | My R book" />
+  <meta name="twitter:title" content="12 Tips | 医療情報DB解析のためのデータハンドリング大全" />
   
   
   
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="使用パッケージ.html"/>
 <link rel="next" href="テンプレートフォーマット.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -132,9 +132,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#whats-this"><i class="fa fa-check"></i><b>1.1</b> What’s this?</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#作成ビルド"><i class="fa fa-check"></i><b>1.2</b> 作成・ビルド</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#公開"><i class="fa fa-check"></i><b>1.3</b> 公開</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#サンプルデータ"><i class="fa fa-check"></i><b>1.4</b> サンプルデータ</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#サンプルデータ"><i class="fa fa-check"></i><b>1.2</b> サンプルデータ</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#作成ビルド管理読まなくていいです"><i class="fa fa-check"></i><b>1.3</b> 作成・ビルド・管理(読まなくていいです)</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#to-do"><i class="fa fa-check"></i><b>1.4</b> To Do</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="ディレクトリとr-project.html"><a href="ディレクトリとr-project.html"><i class="fa fa-check"></i><b>2</b> ディレクトリとR Project</a>
 <ul>
@@ -178,60 +178,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1.1" data-path="データ編集.html"><a href="データ編集.html#mutate"><i class="fa fa-check"></i><b>5.1.1</b> mutate</a></li>
 <li class="chapter" data-level="5.1.2" data-path="データ編集.html"><a href="データ編集.html#add_column"><i class="fa fa-check"></i><b>5.1.2</b> add_column</a></li>
-<li class="chapter" data-level="5.1.3" data-path="データ編集.html"><a href="データ編集.html#つ以上の列から最大や最小を求める"><i class="fa fa-check"></i><b>5.1.3</b> 3つ以上の列から最大や最小を求める</a></li>
+<li class="chapter" data-level="5.1.3" data-path="データ編集.html"><a href="データ編集.html#複数の列から最大や最小を求める"><i class="fa fa-check"></i><b>5.1.3</b> 複数の列から最大や最小を求める</a></li>
+<li class="chapter" data-level="5.1.4" data-path="データ編集.html"><a href="データ編集.html#条件分岐"><i class="fa fa-check"></i><b>5.1.4</b> 条件分岐</a></li>
+<li class="chapter" data-level="5.1.5" data-path="データ編集.html"><a href="データ編集.html#ビニング"><i class="fa fa-check"></i><b>5.1.5</b> ビニング</a></li>
+<li class="chapter" data-level="5.1.6" data-path="データ編集.html"><a href="データ編集.html#行ずらす"><i class="fa fa-check"></i><b>5.1.6</b> 1行ずらす</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="データ編集.html"><a href="データ編集.html#列の編集"><i class="fa fa-check"></i><b>5.2</b> 列の編集</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="データ編集.html"><a href="データ編集.html#mutate-1"><i class="fa fa-check"></i><b>5.2.1</b> mutate</a></li>
 <li class="chapter" data-level="5.2.2" data-path="データ編集.html"><a href="データ編集.html#mutate-across"><i class="fa fa-check"></i><b>5.2.2</b> mutate, across</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="データ編集.html"><a href="データ編集.html#列の削除"><i class="fa fa-check"></i><b>5.3</b> 列の削除</a></li>
-<li class="chapter" data-level="5.4" data-path="データ編集.html"><a href="データ編集.html#列の選択"><i class="fa fa-check"></i><b>5.4</b> 列の選択</a>
+<li class="chapter" data-level="5.3" data-path="データ編集.html"><a href="データ編集.html#列の選択"><i class="fa fa-check"></i><b>5.3</b> 列の選択</a></li>
+<li class="chapter" data-level="5.4" data-path="データ編集.html"><a href="データ編集.html#列の削除"><i class="fa fa-check"></i><b>5.4</b> 列の削除</a>
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="データ編集.html"><a href="データ編集.html#列名が重複してる場合"><i class="fa fa-check"></i><b>5.4.1</b> 列名が重複してる場合</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="データ編集.html"><a href="データ編集.html#列の入替"><i class="fa fa-check"></i><b>5.5</b> 列の入替</a></li>
-<li class="chapter" data-level="5.6" data-path="データ編集.html"><a href="データ編集.html#列の名前変更"><i class="fa fa-check"></i><b>5.6</b> 列の名前変更</a>
+<li class="chapter" data-level="5.6" data-path="データ編集.html"><a href="データ編集.html#列名関連"><i class="fa fa-check"></i><b>5.6</b> 列名関連</a></li>
+<li class="chapter" data-level="5.7" data-path="データ編集.html"><a href="データ編集.html#列名確認"><i class="fa fa-check"></i><b>5.7</b> 列名確認</a>
 <ul>
-<li class="chapter" data-level="5.6.1" data-path="データ編集.html"><a href="データ編集.html#全体変更"><i class="fa fa-check"></i><b>5.6.1</b> 全体変更</a></li>
-<li class="chapter" data-level="5.6.2" data-path="データ編集.html"><a href="データ編集.html#一部変更"><i class="fa fa-check"></i><b>5.6.2</b> 一部変更</a></li>
+<li class="chapter" data-level="5.7.1" data-path="データ編集.html"><a href="データ編集.html#一部変更"><i class="fa fa-check"></i><b>5.7.1</b> 一部変更</a></li>
+<li class="chapter" data-level="5.7.2" data-path="データ編集.html"><a href="データ編集.html#全体変更"><i class="fa fa-check"></i><b>5.7.2</b> 全体変更</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="データ編集.html"><a href="データ編集.html#列名取得"><i class="fa fa-check"></i><b>5.7</b> 列名取得</a></li>
-<li class="chapter" data-level="5.8" data-path="データ編集.html"><a href="データ編集.html#並べ替え"><i class="fa fa-check"></i><b>5.8</b> 並べ替え</a></li>
-<li class="chapter" data-level="5.9" data-path="データ編集.html"><a href="データ編集.html#条件によるフィルタ"><i class="fa fa-check"></i><b>5.9</b> 条件によるフィルタ</a>
+<li class="chapter" data-level="5.8" data-path="データ編集.html"><a href="データ編集.html#列の作成選択入替名前変更を一括で"><i class="fa fa-check"></i><b>5.8</b> 列の作成・選択・入替・名前変更を一括で</a></li>
+<li class="chapter" data-level="5.9" data-path="データ編集.html"><a href="データ編集.html#並べ替え"><i class="fa fa-check"></i><b>5.9</b> 並べ替え</a></li>
+<li class="chapter" data-level="5.10" data-path="データ編集.html"><a href="データ編集.html#条件によるフィルタ"><i class="fa fa-check"></i><b>5.10</b> 条件によるフィルタ</a></li>
+<li class="chapter" data-level="5.11" data-path="データ編集.html"><a href="データ編集.html#その人のx番目の行を取得"><i class="fa fa-check"></i><b>5.11</b> その人のx番目の行を取得</a></li>
+<li class="chapter" data-level="5.12" data-path="データ編集.html"><a href="データ編集.html#その人の上からx番目の行を取得"><i class="fa fa-check"></i><b>5.12</b> その人の上からx番目の行を取得</a></li>
+<li class="chapter" data-level="5.13" data-path="データ編集.html"><a href="データ編集.html#特定のデータフレームの列に含まれる行を抽出"><i class="fa fa-check"></i><b>5.13</b> 特定のデータフレームの列に含まれる行を抽出</a></li>
+<li class="chapter" data-level="5.14" data-path="データ編集.html"><a href="データ編集.html#特定のデータフレームの列に含まれない行を抽出"><i class="fa fa-check"></i><b>5.14</b> 特定のデータフレームの列に含まれない行を抽出</a></li>
+<li class="chapter" data-level="5.15" data-path="データ編集.html"><a href="データ編集.html#重複削除"><i class="fa fa-check"></i><b>5.15</b> 重複削除</a>
 <ul>
-<li class="chapter" data-level="5.9.1" data-path="データ編集.html"><a href="データ編集.html#その人のx番目の行を取得"><i class="fa fa-check"></i><b>5.9.1</b> その人のx番目の行を取得</a></li>
-<li class="chapter" data-level="5.9.2" data-path="データ編集.html"><a href="データ編集.html#あるベクトルに含まれる行を抽出"><i class="fa fa-check"></i><b>5.9.2</b> あるベクトルに含まれる行を抽出</a></li>
-<li class="chapter" data-level="5.9.3" data-path="データ編集.html"><a href="データ編集.html#あるベクトルに含まれない行を抽出"><i class="fa fa-check"></i><b>5.9.3</b> あるベクトルに含まれない行を抽出</a></li>
+<li class="chapter" data-level="5.15.1" data-path="データ編集.html"><a href="データ編集.html#distinct"><i class="fa fa-check"></i><b>5.15.1</b> distinct</a></li>
+<li class="chapter" data-level="5.15.2" data-path="データ編集.html"><a href="データ編集.html#first"><i class="fa fa-check"></i><b>5.15.2</b> first</a></li>
 </ul></li>
-<li class="chapter" data-level="5.10" data-path="データ編集.html"><a href="データ編集.html#重複削除"><i class="fa fa-check"></i><b>5.10</b> 重複削除</a>
+<li class="chapter" data-level="5.16" data-path="データ編集.html"><a href="データ編集.html#データを縦に結合"><i class="fa fa-check"></i><b>5.16</b> データを縦に結合</a></li>
+<li class="chapter" data-level="5.17" data-path="データ編集.html"><a href="データ編集.html#データを横に結合"><i class="fa fa-check"></i><b>5.17</b> データを横に結合</a></li>
+<li class="chapter" data-level="5.18" data-path="データ編集.html"><a href="データ編集.html#マッチしたデータを横に結合"><i class="fa fa-check"></i><b>5.18</b> マッチしたデータを横に結合</a></li>
+<li class="chapter" data-level="5.19" data-path="データ編集.html"><a href="データ編集.html#部分一致"><i class="fa fa-check"></i><b>5.19</b> 部分一致</a>
 <ul>
-<li class="chapter" data-level="5.10.1" data-path="データ編集.html"><a href="データ編集.html#distinct"><i class="fa fa-check"></i><b>5.10.1</b> distinct</a></li>
-<li class="chapter" data-level="5.10.2" data-path="データ編集.html"><a href="データ編集.html#first"><i class="fa fa-check"></i><b>5.10.2</b> first</a></li>
+<li class="chapter" data-level="5.19.1" data-path="データ編集.html"><a href="データ編集.html#文字列一致判定"><i class="fa fa-check"></i><b>5.19.1</b> 文字列一致判定</a></li>
+<li class="chapter" data-level="5.19.2" data-path="データ編集.html"><a href="データ編集.html#文字列置換"><i class="fa fa-check"></i><b>5.19.2</b> 文字列置換</a></li>
+<li class="chapter" data-level="5.19.3" data-path="データ編集.html"><a href="データ編集.html#文字列削除"><i class="fa fa-check"></i><b>5.19.3</b> 文字列削除</a></li>
 </ul></li>
-<li class="chapter" data-level="5.11" data-path="データ編集.html"><a href="データ編集.html#データを縦に結合"><i class="fa fa-check"></i><b>5.11</b> データを縦に結合</a></li>
-<li class="chapter" data-level="5.12" data-path="データ編集.html"><a href="データ編集.html#データを横に結合"><i class="fa fa-check"></i><b>5.12</b> データを横に結合</a></li>
-<li class="chapter" data-level="5.13" data-path="データ編集.html"><a href="データ編集.html#マッチしたデータを横に結合"><i class="fa fa-check"></i><b>5.13</b> マッチしたデータを横に結合</a></li>
-<li class="chapter" data-level="5.14" data-path="データ編集.html"><a href="データ編集.html#行ずらす"><i class="fa fa-check"></i><b>5.14</b> 1行ずらす</a>
-<ul>
-<li class="chapter" data-level="5.14.1" data-path="データ編集.html"><a href="データ編集.html#case_when"><i class="fa fa-check"></i><b>5.14.1</b> case_when</a></li>
-<li class="chapter" data-level="5.14.2" data-path="データ編集.html"><a href="データ編集.html#str_replace_all未編集"><i class="fa fa-check"></i><b>5.14.2</b> str_replace_all(未編集)</a></li>
-</ul></li>
-<li class="chapter" data-level="5.15" data-path="データ編集.html"><a href="データ編集.html#文字列結合"><i class="fa fa-check"></i><b>5.15</b> 文字列結合</a></li>
-<li class="chapter" data-level="5.16" data-path="データ編集.html"><a href="データ編集.html#文字列切り出し"><i class="fa fa-check"></i><b>5.16</b> 文字列切り出し</a></li>
-<li class="chapter" data-level="5.17" data-path="データ編集.html"><a href="データ編集.html#正規表現"><i class="fa fa-check"></i><b>5.17</b> 正規表現</a></li>
-<li class="chapter" data-level="5.18" data-path="データ編集.html"><a href="データ編集.html#欠損値"><i class="fa fa-check"></i><b>5.18</b> 欠損値</a></li>
-<li class="chapter" data-level="5.19" data-path="データ編集.html"><a href="データ編集.html#穴埋め"><i class="fa fa-check"></i><b>5.19</b> 穴埋め</a>
-<ul>
-<li class="chapter" data-level="5.19.1" data-path="データ編集.html"><a href="データ編集.html#基本"><i class="fa fa-check"></i><b>5.19.1</b> 基本</a></li>
-<li class="chapter" data-level="5.19.2" data-path="データ編集.html"><a href="データ編集.html#欠損を0で埋める"><i class="fa fa-check"></i><b>5.19.2</b> 欠損を0で埋める</a></li>
-</ul></li>
-<li class="chapter" data-level="5.20" data-path="データ編集.html"><a href="データ編集.html#除外"><i class="fa fa-check"></i><b>5.20</b> 除外</a></li>
-<li class="chapter" data-level="5.21" data-path="データ編集.html"><a href="データ編集.html#locf"><i class="fa fa-check"></i><b>5.21</b> LOCF</a></li>
+<li class="chapter" data-level="5.20" data-path="データ編集.html"><a href="データ編集.html#正規表現"><i class="fa fa-check"></i><b>5.20</b> 正規表現</a></li>
+<li class="chapter" data-level="5.21" data-path="データ編集.html"><a href="データ編集.html#欠損値"><i class="fa fa-check"></i><b>5.21</b> 欠損値</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="ggplot2によるvisualization.html"><a href="ggplot2によるvisualization.html"><i class="fa fa-check"></i><b>6</b> ggplot2によるVisualization</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="ggplot2によるvisualization.html"><a href="ggplot2によるvisualization.html#基本-1"><i class="fa fa-check"></i><b>6.1</b> 基本</a></li>
+<li class="chapter" data-level="6.1" data-path="ggplot2によるvisualization.html"><a href="ggplot2によるvisualization.html#基本"><i class="fa fa-check"></i><b>6.1</b> 基本</a></li>
 <li class="chapter" data-level="6.2" data-path="ggplot2によるvisualization.html"><a href="ggplot2によるvisualization.html#応用"><i class="fa fa-check"></i><b>6.2</b> 応用</a>
 <ul>
 <li class="chapter" data-level="6.2.1" data-path="ggplot2によるvisualization.html"><a href="ggplot2によるvisualization.html#図中にテキストラベルを入れる"><i class="fa fa-check"></i><b>6.2.1</b> 図中にテキストラベルを入れる</a></li>
@@ -391,7 +386,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">My R book</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">医療情報DB解析のためのデータハンドリング大全</a>
           </h1>
         </div>
 
@@ -483,7 +478,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="シャープ" class="section level2" number="12.3">
 <h2><span class="header-section-number">12.3</span> # シャープ</h2>
 <p>Rスクリプトにコメントを残すには#をつける。</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="tips.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulation</span>(df, <span class="at">option =</span> <span class="cn">TRUE</span>) <span class="co"># これはコメントです</span></span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="tips.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulation</span>(df, <span class="at">option =</span> <span class="cn">TRUE</span>) <span class="co"># これはコメントです</span></span></code></pre></div>
 <p>コメントを残すのは、コードレビューしてもらうときのためと、自分が後で見返したときのため。<br />
 最初は苦痛かもしれないが、トータルで絶対得なのでコメント書きまくろう。</p>
 </div>
@@ -491,19 +486,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">12.4</span> if(0)</h2>
 <p>1行とかの操作を一時的に実行させない場合は上記の#を使えばいい。<br />
 実行させたくない操作が多くの行にまたがっている場合は、if(0){}を使うのがおすすめ。</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="tips.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="dv">0</span>){</span>
-<span id="cb60-2"><a href="tips.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">veryverylong_action</span>(df) <span class="sc">%&gt;%</span> </span>
-<span id="cb60-3"><a href="tips.html#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">hogehoge</span>(<span class="at">mano =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb60-4"><a href="tips.html#cb60-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tonikaku_nagai_syori</span>()</span>
-<span id="cb60-5"><a href="tips.html#cb60-5" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="tips.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="dv">0</span>){</span>
+<span id="cb53-2"><a href="tips.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">veryverylong_action</span>(df) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-3"><a href="tips.html#cb53-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">hogehoge</span>(<span class="at">mano =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-4"><a href="tips.html#cb53-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tonikaku_nagai_syori</span>()</span>
+<span id="cb53-5"><a href="tips.html#cb53-5" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
 <p>if(0){}で囲まれたコードは実行されない。実行させたいときはif(1){}とすればよいので、いわばスイッチになる。</p>
 <div id="パッケージ無かったらインストール" class="section level3" number="12.4.1">
 <h3><span class="header-section-number">12.4.1</span> パッケージ無かったらインストール</h3>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="tips.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;dplyr&quot;</span>)) {<span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)}</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="tips.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;dplyr&quot;</span>)) {<span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)}</span></code></pre></div>
 </div>
 <div id="警告を出力せず読み込む" class="section level3" number="12.4.2">
 <h3><span class="header-section-number">12.4.2</span> 警告を出力せず読み込む</h3>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="tips.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>(<span class="fu">library</span>(tidyverse))</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="tips.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>(<span class="fu">library</span>(tidyverse))</span></code></pre></div>
 </div>
 </div>
 <div id="時間計測-1" class="section level2" number="12.5">
@@ -615,33 +610,33 @@ githubというサイトにはパッケージの関数がどのように定義�
 <h3><span class="header-section-number">12.12.3</span> Rのアップデート</h3>
 <p>素のRから以下のコードを実行する。<br />
 うまくいかない場合は普通に<a href="https://cran.r-project.org/">ここ</a>からダウンロード。</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="tips.html#cb63-1" aria-hidden="true" tabindex="-1"></a>installr<span class="sc">::</span><span class="fu">updateR</span>(<span class="at">browse_news =</span> <span class="cn">FALSE</span>, <span class="at">install_R =</span> <span class="cn">TRUE</span>, <span class="at">copy_packages =</span> <span class="cn">FALSE</span>,<span class="at">copy_Rprofile.site =</span> <span class="cn">FALSE</span>, <span class="at">keep_old_packages =</span> <span class="cn">FALSE</span>, <span class="at">update_packages =</span> <span class="cn">TRUE</span>, <span class="at">start_new_R =</span> <span class="cn">FALSE</span>,<span class="at">quit_R =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="tips.html#cb56-1" aria-hidden="true" tabindex="-1"></a>installr<span class="sc">::</span><span class="fu">updateR</span>(<span class="at">browse_news =</span> <span class="cn">FALSE</span>, <span class="at">install_R =</span> <span class="cn">TRUE</span>, <span class="at">copy_packages =</span> <span class="cn">FALSE</span>,<span class="at">copy_Rprofile.site =</span> <span class="cn">FALSE</span>, <span class="at">keep_old_packages =</span> <span class="cn">FALSE</span>, <span class="at">update_packages =</span> <span class="cn">TRUE</span>, <span class="at">start_new_R =</span> <span class="cn">FALSE</span>,<span class="at">quit_R =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="メモリ開放" class="section level2" number="12.13">
 <h2><span class="header-section-number">12.13</span> メモリ開放</h2>
 <p><a href="http://knknkn.hatenablog.com/entry/2019/05/26/011705">参考文献</a></p>
 <p>重いデータを読み込んだ時等に、Rの挙動が不安定になったときは以下を実行する。</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="tips.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gc</span>(<span class="at">reset =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb64-2"><a href="tips.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gc</span>(<span class="at">reset =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="tips.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gc</span>(<span class="at">reset =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb57-2"><a href="tips.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gc</span>(<span class="at">reset =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
 <div id="サンプルデータ作成" class="section level2" number="12.14">
 <h2><span class="header-section-number">12.14</span> サンプルデータ作成</h2>
 <div id="data.frameを使う" class="section level3" number="12.14.1">
 <h3><span class="header-section-number">12.14.1</span> data.frame()を使う</h3>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="tips.html#cb65-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>), <span class="at">value =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="tips.html#cb58-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>), <span class="at">value =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>))</span></code></pre></div>
 </div>
 <div id="read.tableを使う" class="section level3" number="12.14.2">
 <h3><span class="header-section-number">12.14.2</span> read.table()を使う</h3>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="tips.html#cb66-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">text =</span> <span class="st">&quot;id  samediff  factor  value</span></span>
-<span id="cb66-2"><a href="tips.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="st">1 S give    3</span></span>
-<span id="cb66-3"><a href="tips.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="st">1 S impact  4</span></span>
-<span id="cb66-4"><a href="tips.html#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="st">2 S give    2</span></span>
-<span id="cb66-5"><a href="tips.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="st">2 S impact  5   </span></span>
-<span id="cb66-6"><a href="tips.html#cb66-6" aria-hidden="true" tabindex="-1"></a><span class="st">3 D give    1</span></span>
-<span id="cb66-7"><a href="tips.html#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="st">3 D impact  4</span></span>
-<span id="cb66-8"><a href="tips.html#cb66-8" aria-hidden="true" tabindex="-1"></a><span class="st">4 D give    3</span></span>
-<span id="cb66-9"><a href="tips.html#cb66-9" aria-hidden="true" tabindex="-1"></a><span class="st">4 D impact  5&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="tips.html#cb59-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">text =</span> <span class="st">&quot;id  samediff  factor  value</span></span>
+<span id="cb59-2"><a href="tips.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="st">1 S give    3</span></span>
+<span id="cb59-3"><a href="tips.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="st">1 S impact  4</span></span>
+<span id="cb59-4"><a href="tips.html#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="st">2 S give    2</span></span>
+<span id="cb59-5"><a href="tips.html#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="st">2 S impact  5   </span></span>
+<span id="cb59-6"><a href="tips.html#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="st">3 D give    1</span></span>
+<span id="cb59-7"><a href="tips.html#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="st">3 D impact  4</span></span>
+<span id="cb59-8"><a href="tips.html#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="st">4 D give    3</span></span>
+<span id="cb59-9"><a href="tips.html#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="st">4 D impact  5&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 <div id="datapasta" class="section level3" number="12.14.3">
 <h3><span class="header-section-number">12.14.3</span> datapasta</h3>
