@@ -13,7 +13,7 @@ here-package
 csvファイル読込
 read.csv
 fread
-型や名前を明示的に指定して読み込み
+型を明示して読み込み
 excelから読込xlsx
 sasデータから読込sas7bdat
 データ確認

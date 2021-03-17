@@ -5,14 +5,14 @@
 ### 欠損列を含む列を表示
 
 ```{r}
-starwars %>% 
+disease %>% 
   summarise(across(everything(), ~sum(is.na(.)), .names = "{.col}_na"))
 ```
 
 ### ユニークデータ数
 
 ```{r}
-df %>% 
+drug %>% 
   n_distinct(id)
 ```
 
@@ -21,17 +21,17 @@ df %>%
 - mode, typeof
 
 ```{r mode}
-starwars %>% 
+disease %>% 
   summarise(across(everything(), ~mode(.)))
 
-starwars %>% 
+disease %>% 
   summarise(across(everything(), ~typeof(.)))
 ```
 
 ### 列ごとに型、重複無し数、欠損数を表示
 
 ```{r}
-starwars %>% map_df(~(data.frame(class = class(.x), n_distinct = n_distinct(.x), isna = sum(is.na(.x)))), .id = "variable")
+disease %>% map_df(~(data.frame(class = class(.x), n_distinct = n_distinct(.x), isna = sum(is.na(.x)))), .id = "variable")
 ```
 
 ## dataframeの概要
@@ -39,7 +39,7 @@ starwars %>% map_df(~(data.frame(class = class(.x), n_distinct = n_distinct(.x),
 ### dataframeの次元(行数と列数)
 
 ```{r dim}
-dim(data)
+dim(disease)
 ```
 
 ### package

@@ -148,11 +148,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="入力.html"><a href="入力.html"><i class="fa fa-check"></i><b>3</b> 入力</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="入力.html"><a href="入力.html#csvファイル読込"><i class="fa fa-check"></i><b>3.1</b> CSvファイル読込</a>
+<li class="chapter" data-level="3.1" data-path="入力.html"><a href="入力.html#csvファイル読込"><i class="fa fa-check"></i><b>3.1</b> CSVファイル読込</a>
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="入力.html"><a href="入力.html#read.csv"><i class="fa fa-check"></i><b>3.1.1</b> read.csv</a></li>
 <li class="chapter" data-level="3.1.2" data-path="入力.html"><a href="入力.html#fread"><i class="fa fa-check"></i><b>3.1.2</b> fread</a></li>
-<li class="chapter" data-level="3.1.3" data-path="入力.html"><a href="入力.html#型や名前を明示的に指定して読み込み"><i class="fa fa-check"></i><b>3.1.3</b> 型や名前を明示的に指定して読み込み</a></li>
+<li class="chapter" data-level="3.1.3" data-path="入力.html"><a href="入力.html#型を明示して読み込み"><i class="fa fa-check"></i><b>3.1.3</b> 型を明示して読み込み</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="入力.html"><a href="入力.html#excelから読込xlsx"><i class="fa fa-check"></i><b>3.2</b> Excelから読込(xlsx)</a></li>
 <li class="chapter" data-level="3.3" data-path="入力.html"><a href="入力.html#sasデータから読込sas7bdat"><i class="fa fa-check"></i><b>3.3</b> SASデータから読込(sas7bdat)</a></li>
@@ -397,7 +397,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="入力" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> 入力</h1>
 <div id="csvファイル読込" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> CSvファイル読込</h2>
+<h2><span class="header-section-number">3.1</span> CSVファイル読込</h2>
 <div id="read.csv" class="section level3" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> read.csv</h3>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="入力.html#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;df.csv&quot;</span>)</span></code></pre></div>
@@ -405,19 +405,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fread" class="section level3" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> fread</h3>
 <ul>
-<li>data.frameで読み込むためにはdata.table=FALSE</li>
+<li>data.frameで読み込むためにはdata.table = FALSE</li>
 </ul>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="入力.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
 <span id="cb6-2"><a href="入力.html#cb6-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;df.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">data.table =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
-<div id="型や名前を明示的に指定して読み込み" class="section level3" number="3.1.3">
-<h3><span class="header-section-number">3.1.3</span> 型や名前を明示的に指定して読み込み</h3>
+<div id="型を明示して読み込み" class="section level3" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> 型を明示して読み込み</h3>
 <ul>
 <li>読み込み時はこれを使ってやるのが一番安全</li>
 <li>特に桁数の大きい患者ID等は必ずcharacterにする</li>
-<li>もっと簡単な方法がありそう</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="入力.html#cb7-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;test.csv&quot;</span>, <span class="at">colClasses =</span> <span class="fu">c</span>(<span class="st">&quot;character&quot;</span>, <span class="st">&quot;character&quot;</span>, <span class="fu">rep</span>(<span class="st">&quot;numeric&quot;</span>,<span class="dv">3</span>), <span class="st">&quot;character&quot;</span>), <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;c1&quot;</span>, <span class="st">&quot;c2&quot;</span>, <span class="st">&quot;c3&quot;</span>, <span class="st">&quot;c4&quot;</span>, <span class="st">&quot;c5&quot;</span>, <span class="st">&quot;c6&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="入力.html#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;test.csv&quot;</span>, <span class="at">colClasses =</span> <span class="fu">c</span>(<span class="at">id =</span> <span class="st">&quot;character&quot;</span>))</span></code></pre></div>
 </div>
 </div>
 <div id="excelから読込xlsx" class="section level2" number="3.2">

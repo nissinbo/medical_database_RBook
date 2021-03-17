@@ -148,11 +148,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="入力.html"><a href="入力.html"><i class="fa fa-check"></i><b>3</b> 入力</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="入力.html"><a href="入力.html#csvファイル読込"><i class="fa fa-check"></i><b>3.1</b> CSvファイル読込</a>
+<li class="chapter" data-level="3.1" data-path="入力.html"><a href="入力.html#csvファイル読込"><i class="fa fa-check"></i><b>3.1</b> CSVファイル読込</a>
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="入力.html"><a href="入力.html#read.csv"><i class="fa fa-check"></i><b>3.1.1</b> read.csv</a></li>
 <li class="chapter" data-level="3.1.2" data-path="入力.html"><a href="入力.html#fread"><i class="fa fa-check"></i><b>3.1.2</b> fread</a></li>
-<li class="chapter" data-level="3.1.3" data-path="入力.html"><a href="入力.html#型や名前を明示的に指定して読み込み"><i class="fa fa-check"></i><b>3.1.3</b> 型や名前を明示的に指定して読み込み</a></li>
+<li class="chapter" data-level="3.1.3" data-path="入力.html"><a href="入力.html#型を明示して読み込み"><i class="fa fa-check"></i><b>3.1.3</b> 型を明示して読み込み</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="入力.html"><a href="入力.html#excelから読込xlsx"><i class="fa fa-check"></i><b>3.2</b> Excelから読込(xlsx)</a></li>
 <li class="chapter" data-level="3.3" data-path="入力.html"><a href="入力.html#sasデータから読込sas7bdat"><i class="fa fa-check"></i><b>3.3</b> SASデータから読込(sas7bdat)</a></li>
@@ -397,7 +397,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">医療情報DB解析のためのデータハンドリング大全</h1>
 <p class="author"><em>nissinbo</em></p>
-<p class="date"><em>2021-03-17 23:04:46</em></p>
+<p class="date"><em>2021-03-18 00:34:35</em></p>
 </div>
 <div id="はじめに" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> はじめに</h1>
@@ -420,7 +420,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li>以下のようにgithubから直接読み込む</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv()</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>patient <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/nissinbo/medical_database_RBook/master/data/patient.csv&quot;</span>)</span>
+<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a>disease <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/nissinbo/medical_database_RBook/master/data/disease.csv&quot;</span>)</span>
+<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true" tabindex="-1"></a>drug <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/nissinbo/medical_database_RBook/master/data/drug.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="作成ビルド管理読まなくていいです" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> 作成・ビルド・管理(読まなくていいです)</h2>

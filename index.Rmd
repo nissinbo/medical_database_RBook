@@ -24,7 +24,9 @@ output:
 - 以下のようにgithubから直接読み込む
 
 ```{r}
-# read.csv()
+patient <- read.csv("https://raw.githubusercontent.com/nissinbo/medical_database_RBook/master/data/patient.csv")
+disease <- read.csv("https://raw.githubusercontent.com/nissinbo/medical_database_RBook/master/data/disease.csv")
+drug <- read.csv("https://raw.githubusercontent.com/nissinbo/medical_database_RBook/master/data/drug.csv")
 ```
 
 ## 作成・ビルド・管理(読まなくていいです)

@@ -148,11 +148,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="入力.html"><a href="入力.html"><i class="fa fa-check"></i><b>3</b> 入力</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="入力.html"><a href="入力.html#csvファイル読込"><i class="fa fa-check"></i><b>3.1</b> CSvファイル読込</a>
+<li class="chapter" data-level="3.1" data-path="入力.html"><a href="入力.html#csvファイル読込"><i class="fa fa-check"></i><b>3.1</b> CSVファイル読込</a>
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="入力.html"><a href="入力.html#read.csv"><i class="fa fa-check"></i><b>3.1.1</b> read.csv</a></li>
 <li class="chapter" data-level="3.1.2" data-path="入力.html"><a href="入力.html#fread"><i class="fa fa-check"></i><b>3.1.2</b> fread</a></li>
-<li class="chapter" data-level="3.1.3" data-path="入力.html"><a href="入力.html#型や名前を明示的に指定して読み込み"><i class="fa fa-check"></i><b>3.1.3</b> 型や名前を明示的に指定して読み込み</a></li>
+<li class="chapter" data-level="3.1.3" data-path="入力.html"><a href="入力.html#型を明示して読み込み"><i class="fa fa-check"></i><b>3.1.3</b> 型を明示して読み込み</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="入力.html"><a href="入力.html#excelから読込xlsx"><i class="fa fa-check"></i><b>3.2</b> Excelから読込(xlsx)</a></li>
 <li class="chapter" data-level="3.3" data-path="入力.html"><a href="入力.html#sasデータから読込sas7bdat"><i class="fa fa-check"></i><b>3.3</b> SASデータから読込(sas7bdat)</a></li>
@@ -400,12 +400,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.1</span> 列ごと</h2>
 <div id="欠損列を含む列を表示" class="section level3" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> 欠損列を含む列を表示</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="データ確認.html#cb9-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="データ確認.html#cb9-1" aria-hidden="true" tabindex="-1"></a>disease <span class="sc">%&gt;%</span> </span>
 <span id="cb9-2"><a href="データ確認.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.)), <span class="at">.names =</span> <span class="st">&quot;{.col}_na&quot;</span>))</span></code></pre></div>
 </div>
 <div id="ユニークデータ数" class="section level3" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> ユニークデータ数</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="データ確認.html#cb10-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="データ確認.html#cb10-1" aria-hidden="true" tabindex="-1"></a>drug <span class="sc">%&gt;%</span> </span>
 <span id="cb10-2"><a href="データ確認.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">n_distinct</span>(id)</span></code></pre></div>
 </div>
 <div id="列の型" class="section level3" number="4.1.3">
@@ -413,22 +413,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>mode, typeof</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="データ確認.html#cb11-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="データ確認.html#cb11-1" aria-hidden="true" tabindex="-1"></a>disease <span class="sc">%&gt;%</span> </span>
 <span id="cb11-2"><a href="データ確認.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span><span class="fu">mode</span>(.)))</span>
 <span id="cb11-3"><a href="データ確認.html#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="データ確認.html#cb11-4" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb11-4"><a href="データ確認.html#cb11-4" aria-hidden="true" tabindex="-1"></a>disease <span class="sc">%&gt;%</span> </span>
 <span id="cb11-5"><a href="データ確認.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span><span class="fu">typeof</span>(.)))</span></code></pre></div>
 </div>
 <div id="列ごとに型重複無し数欠損数を表示" class="section level3" number="4.1.4">
 <h3><span class="header-section-number">4.1.4</span> 列ごとに型、重複無し数、欠損数を表示</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="データ確認.html#cb12-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">map_df</span>(<span class="sc">~</span>(<span class="fu">data.frame</span>(<span class="at">class =</span> <span class="fu">class</span>(.x), <span class="at">n_distinct =</span> <span class="fu">n_distinct</span>(.x), <span class="at">isna =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.x)))), <span class="at">.id =</span> <span class="st">&quot;variable&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="データ確認.html#cb12-1" aria-hidden="true" tabindex="-1"></a>disease <span class="sc">%&gt;%</span> <span class="fu">map_df</span>(<span class="sc">~</span>(<span class="fu">data.frame</span>(<span class="at">class =</span> <span class="fu">class</span>(.x), <span class="at">n_distinct =</span> <span class="fu">n_distinct</span>(.x), <span class="at">isna =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.x)))), <span class="at">.id =</span> <span class="st">&quot;variable&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="dataframeの概要" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> dataframeの概要</h2>
 <div id="dataframeの次元行数と列数" class="section level3" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> dataframeの次元(行数と列数)</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="データ確認.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="データ確認.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(disease)</span></code></pre></div>
 </div>
 <div id="package" class="section level3" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> package</h3>

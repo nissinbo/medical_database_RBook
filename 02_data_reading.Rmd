@@ -1,6 +1,6 @@
 # 入力
 
-## CSvファイル読込
+## CSVファイル読込
 
 ### read.csv
 
@@ -10,21 +10,20 @@ df <- read.csv("df.csv")
 
 ### fread
 
-- data.frameで読み込むためにはdata.table=FALSE
+- data.frameで読み込むためにはdata.table = FALSE
 
 ```{r fread}
 library(data.table)
 df <- fread("df.csv", sep = ",", data.table = FALSE)
 ```
 
-### 型や名前を明示的に指定して読み込み
+### 型を明示して読み込み
 
 - 読み込み時はこれを使ってやるのが一番安全
 - 特に桁数の大きい患者ID等は必ずcharacterにする
-- もっと簡単な方法がありそう
 
 ```{r}
-data <- fread("test.csv", colClasses = c("character", "character", rep("numeric",3), "character"), col.names = c("c1", "c2", "c3", "c4", "c5", "c6"))
+df <- fread("test.csv", colClasses = c(id = "character"))
 ```
 
 ## Excelから読込(xlsx)

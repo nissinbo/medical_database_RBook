@@ -15,7 +15,7 @@ patient <- data.frame(id = 1:n) %>%
 drug_row_n <- sample(n:(n * 100), 1)
 
 drug <- data.frame(id = c(1:n, sample(1:n, drug_row_n, replace = TRUE))) %>% 
-  left_join(sample_patient %>% select(id, start_date), "id") %>% 
+  left_join(patient %>% select(id, start_date), "id") %>% 
   mutate(date = sample(seq(as.Date("2010-01-01"), as.Date("2020/12/31"), "day"), nrow(.))) %>% 
   filter(start_date <= date) %>% 
   select(!start_date) %>% 
@@ -27,7 +27,7 @@ drug <- data.frame(id = c(1:n, sample(1:n, drug_row_n, replace = TRUE))) %>%
 disease_row_n <- sample(n:(n * 100), 1)
 
 disease <- data.frame(id = c(1:n, sample(1:n, disease_row_n, replace = TRUE))) %>% 
-  left_join(sample_patient %>% select(id, start_date), "id") %>% 
+  left_join(patient %>% select(id, start_date), "id") %>% 
   mutate(date = sample(seq(as.Date("2010-01-01"), as.Date("2020/12/31"), "day"), nrow(.))) %>% 
   filter(start_date <= date) %>% 
   select(!start_date) %>% 
